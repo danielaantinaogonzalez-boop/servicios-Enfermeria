@@ -1,56 +1,88 @@
 <!DOCTYPE html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>Daniela Antinao · Enfermera a domicilio en Graneros</title>
 <meta name="description" content="Servicios de enfermería profesional a domicilio en Graneros y alrededores.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--p:#e8618c;--p2:#7c5cff;--bg:#fff8fb;--ink:#2b2438;--soft:#f3eaff;--card:#fff;--mut:#5b5469}
-*{box-sizing:border-box;margin:0}html{scroll-behavior:smooth}
-body{font-family:Poppins,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
-h1,h2,h3{font-family:'Playfair Display',serif}
-.nav{position:sticky;top:0;z-index:9;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;background:#fffffff0;backdrop-filter:blur(8px);box-shadow:0 2px 14px #0001}
-.logo{font-family:'Playfair Display';font-weight:700;color:var(--p);text-decoration:none;font-size:1.2rem}
-nav a{margin-left:18px;color:var(--ink);text-decoration:none;font-weight:500;font-size:.92rem}nav a:hover{color:var(--p)}
-.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:70px 5vw;background:linear-gradient(135deg,#ffe3ee,#ece4ff)}
-.hero h1{font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.15;margin:14px 0}.hero em{color:var(--p)}.hero p{color:#2b2438}
-.hero-img{width:100%;max-width:420px;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:center top;justify-self:center;border-radius:210px 210px 24px 24px;box-shadow:0 20px 50px #7c5cff40}
-.pill,.tag{display:inline-block;background:#fff;color:var(--p2);padding:4px 14px;border-radius:99px;font-size:.78rem;font-weight:600}
-.btn{display:inline-block;margin:18px 8px 0 0;padding:12px 26px;border:0;border-radius:99px;background:linear-gradient(90deg,var(--p),var(--p2));color:#fff;font:600 .95rem Poppins;text-decoration:none;cursor:pointer;transition:.25s}
-.btn:hover{transform:translateY(-3px);box-shadow:0 10px 24px #e8618c55}.btn.ghost{background:#fff;color:var(--p2)}
-.stats{display:flex;justify-content:center;gap:5vw;flex-wrap:wrap;padding:40px 5vw;text-align:center}.stats b{display:block;font-size:1.6rem;color:var(--p);font-family:'Playfair Display'}
-.about{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center;padding:60px 8vw;background:var(--soft)}
-.about img{width:100%;max-width:380px;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:center top;justify-self:center;border-radius:24px;box-shadow:0 14px 40px #7c5cff30}h2.t{font-size:2.2rem;color:var(--p2);margin-bottom:12px}.about p{margin-bottom:10px}
-section.s{padding:70px 5vw}.center{text-align:center}.sub{color:var(--mut);margin-bottom:24px}
+:root{--p:#e8618c;--p2:#7c5cff;--bg:#fff8fb;--ink:#2b2438;--soft:#f5edff;--card:#fff;--mut:#5b5469;--g:linear-gradient(135deg,#e8618c,#7c5cff);--sh:0 10px 30px #7c5cff22}
+*{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}html{scroll-behavior:smooth;scroll-padding-top:76px}
+body{font-family:Poppins,sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+h1,h2,h3{font-family:'Playfair Display',serif;line-height:1.2}img{max-width:100%}
+.nav{position:sticky;top:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;background:#fffffff2;backdrop-filter:blur(12px);box-shadow:0 2px 18px #7c5cff18}
+.logo{font-family:'Playfair Display';font-weight:700;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;text-decoration:none;font-size:1.3rem}
+nav a{margin-left:22px;color:var(--ink);text-decoration:none;font-weight:500;font-size:.92rem;position:relative}
+nav a:after{content:"";position:absolute;left:0;bottom:-4px;width:0;height:2px;background:var(--g);transition:.25s}nav a:hover:after{width:100%}
+.burger{display:none;border:0;background:var(--g);color:#fff;font-size:1.3rem;width:44px;height:44px;border-radius:14px;cursor:pointer}
+.hero{position:relative;overflow:hidden;display:grid;grid-template-columns:1.1fr 1fr;gap:40px;align-items:center;padding:80px 6vw;background:linear-gradient(135deg,#ffe3ee,#ece4ff 70%,#e3f0ff)}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;filter:blur(60px);opacity:.55;z-index:0}
+.hero:before{width:340px;height:340px;background:#ff9ec0;top:-100px;left:-80px}.hero:after{width:380px;height:380px;background:#b9a6ff;bottom:-140px;right:-100px}
+.hero>*{position:relative;z-index:1}
+.hero h1{font-size:clamp(2.1rem,5vw,3.6rem);margin:16px 0}.hero em{font-style:italic;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{font-size:1.08rem;max-width:520px}
+.hero-pic{position:relative;justify-self:center;width:100%;max-width:420px}
+.hero-img{display:block;width:100%;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:center top;border-radius:210px 210px 28px 28px;border:6px solid #fff;box-shadow:0 24px 60px #7c5cff45}
+.fl1,.fl2{position:absolute;background:#fffffff0;backdrop-filter:blur(6px);padding:9px 16px;border-radius:99px;font-size:.82rem;font-weight:600;box-shadow:var(--sh);animation:fl 4s ease-in-out infinite}
+.fl1{left:-14px;bottom:70px}.fl2{right:-10px;top:60px;animation-delay:1.5s}
+@keyframes fl{50%{transform:translateY(-8px)}}
+.pill,.tag{display:inline-block;background:#fff;color:var(--p2);padding:5px 15px;border-radius:99px;font-size:.78rem;font-weight:600;box-shadow:0 2px 10px #7c5cff18}
+.btn{display:inline-block;margin:20px 10px 0 0;padding:14px 30px;border:0;border-radius:99px;background:var(--g);color:#fff;font:600 1rem Poppins;text-decoration:none;cursor:pointer;transition:.25s;box-shadow:0 8px 22px #e8618c55}
+.btn:hover{transform:translateY(-3px);box-shadow:0 14px 30px #e8618c66}.btn.ghost{background:#fff;color:var(--p2);box-shadow:var(--sh)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;max-width:900px;margin:-38px auto 0;padding:0 5vw;position:relative;z-index:2;text-align:center}
+.stats div{background:#fff;border-radius:20px;padding:20px 10px;box-shadow:var(--sh);font-size:.88rem;color:var(--mut)}
+.stats b{display:block;font-size:1.35rem;color:var(--p);font-family:'Playfair Display'}
+.about{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:center;padding:80px 8vw;margin-top:40px;background:var(--soft)}
+.about img{display:block;width:100%;max-width:380px;aspect-ratio:4/5;height:auto;object-fit:cover;object-position:center top;justify-self:center;border-radius:28px;border:6px solid #fff;box-shadow:0 18px 44px #7c5cff30}
+h2.t{font-size:clamp(1.8rem,4vw,2.4rem);background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;margin-bottom:12px;display:inline-block}
+.center{text-align:center}.about p{margin-bottom:12px}
+section.s{padding:80px 5vw}.sub{color:var(--mut);margin:0 auto 26px;max-width:640px}
 .filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:34px}
-.chip{border:2px solid var(--p2);background:var(--card);color:var(--p2);padding:7px 18px;border-radius:99px;font:500 .85rem Poppins;cursor:pointer}.chip.active,.chip:hover{background:var(--p2);color:#fff}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:26px}
-.card{background:var(--card);border-radius:20px;overflow:hidden;box-shadow:0 8px 26px #7c5cff1f;transition:.3s}.card:hover{transform:translateY(-8px)}
-.ph{height:170px;background:linear-gradient(135deg,#ffc2d6,#cdbfff) center/cover}
-.body{padding:18px}.body h3{font-size:1.15rem;margin:8px 0 6px}.body p{font-size:.9rem;color:var(--mut)}
-.foot{display:flex;justify-content:space-between;align-items:center;margin-top:14px}.foot strong{color:var(--p);font-size:1.25rem}.foot a{color:var(--p2);font-weight:600;text-decoration:none}
-.testi{background:var(--soft)}.testi blockquote p{font-style:italic;margin:8px 0 12px}.stars{color:#f5b301;letter-spacing:3px}
+.chip{border:2px solid var(--p2);background:var(--card);color:var(--p2);padding:9px 18px;border-radius:99px;font:500 .86rem Poppins;cursor:pointer;transition:.2s}.chip.active,.chip:hover{background:var(--g);border-color:transparent;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:26px;max-width:1200px;margin:auto}
+.card{background:var(--card);border-radius:22px;overflow:hidden;box-shadow:var(--sh);transition:.3s;display:flex;flex-direction:column}.card:hover{transform:translateY(-8px);box-shadow:0 20px 44px #7c5cff33}
+.ph{height:180px;background:linear-gradient(135deg,#ffc2d6,#cdbfff) center/cover;transition:.5s}.card:hover .ph{transform:scale(1.05)}
+.card{position:relative}.ph{margin-bottom:0}.card>.ph{overflow:hidden}
+.body{padding:20px;display:flex;flex-direction:column;flex:1;background:#fff;position:relative}.body h3{font-size:1.15rem;margin:10px 0 6px}.body p{font-size:.92rem;color:var(--mut);flex:1}
+.foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.foot strong{background:var(--g);color:#fff;padding:5px 14px;border-radius:99px;font-size:1.05rem}.foot a{color:var(--p2);font-weight:600;text-decoration:none;padding:8px 0}
 .cover-in{display:grid;grid-template-columns:1fr 1.3fr;gap:36px;align-items:center;max-width:1100px;margin:auto}
-.cover .tag{background:var(--soft);margin:0 6px 6px 0}.cover iframe{width:100%;height:360px;border:0;border-radius:24px;box-shadow:0 14px 40px #7c5cff30}
+.cover .tag{background:var(--soft);margin:0 6px 8px 0}.cover iframe{width:100%;height:380px;border:0;border-radius:26px;box-shadow:0 16px 44px #7c5cff30}
 .contact{background:linear-gradient(135deg,#ece4ff,#ffe3ee)}
-.box{max-width:560px;margin:auto;background:var(--card);padding:34px;border-radius:24px;box-shadow:0 14px 40px #0002}
-.box label{display:block;font-weight:500;font-size:.88rem;margin-top:12px}
-.box input,.box select,.box textarea{width:100%;padding:11px;border:1.5px solid #ddd;border-radius:12px;font:inherit;background:#fff;color:#2b2438}
-footer{text-align:center;padding:26px;background:#2b2438;color:#ddd;font-size:.85rem}
+.box{max-width:580px;margin:auto;background:#fff;padding:36px;border-radius:28px;box-shadow:0 20px 50px #0002}
+.box label{display:block;font-weight:500;font-size:.9rem;margin-top:14px}
+.box input,.box select,.box textarea{width:100%;margin-top:6px;padding:13px;border:2px solid #e6def5;border-radius:14px;font:inherit;font-size:16px;background:#fff;color:#2b2438;transition:.2s}
+.box input:focus,.box select:focus,.box textarea:focus{outline:0;border-color:var(--p2);box-shadow:0 0 0 4px #7c5cff22}
+.box .btn{width:100%;margin:22px 0 0}
+footer{text-align:center;padding:34px 5vw calc(34px + env(safe-area-inset-bottom));background:#2b2438;color:#d8d3e3;font-size:.88rem}
+.wa{position:fixed;right:max(18px,env(safe-area-inset-right));bottom:max(18px,env(safe-area-inset-bottom));z-index:60;width:60px;height:60px;border-radius:50%;background:#25d366;color:#fff;display:flex;align-items:center;justify-content:center;font-size:30px;text-decoration:none;box-shadow:0 8px 24px #25d36688;animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 #25d36699}70%{box-shadow:0 0 0 18px #25d36600}100%{box-shadow:0 0 0 0 #25d36600}}
 .reveal{opacity:0;transform:translateY(30px);transition:.7s}.reveal.show{opacity:1;transform:none}
-@media(max-width:800px){.hero,.about,.cover-in{grid-template-columns:1fr}nav a{margin-left:10px}}
+@media(max-width:800px){
+.burger{display:block}
+nav{position:absolute;left:0;right:0;top:100%;background:#fff;display:none;flex-direction:column;padding:10px 6vw 18px;box-shadow:0 14px 24px #7c5cff22}
+body.open nav{display:flex}nav a{margin:0;padding:14px 0;border-bottom:1px solid #f0e9fb;font-size:1rem}nav a:after{display:none}
+.hero{grid-template-columns:1fr;padding:44px 6vw 70px;gap:30px;text-align:center}.hero p{margin:auto}
+.hero .btn{display:block;margin:14px auto 0;max-width:320px}.hero-pic{max-width:320px}.fl1{left:-6px}.fl2{right:-6px}
+.stats{grid-template-columns:1fr;gap:12px;margin-top:-30px}
+.about{grid-template-columns:1fr;padding:56px 6vw;text-align:center;gap:28px}.about img{max-width:300px}
+section.s{padding:56px 5vw}.cover-in{grid-template-columns:1fr;text-align:center}.cover iframe{height:280px}
+.filters{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;padding:4px 2px 12px;scrollbar-width:none}.filters::-webkit-scrollbar{display:none}.chip{white-space:nowrap}
+.cover .filters{flex-wrap:wrap;justify-content:center}
+.grid{grid-template-columns:1fr}.box{padding:26px 20px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style></head>
 <body>
 <header class="nav"><a href="#inicio" class="logo">♥ Daniela Antinao</a>
-<nav><a href="#sobre-mi">Sobre mí</a><a href="#catalogo">Servicios</a><a href="#cobertura">Cobertura</a><a href="#contacto">Contacto</a></nav></header>
+<button class="burger" aria-label="Menú" onclick="document.body.classList.toggle('open')">☰</button><nav><a href="#sobre-mi">Sobre mí</a><a href="#catalogo">Servicios</a><a href="#cobertura">Cobertura</a><a href="#contacto">Contacto</a></nav></header>
 
 <section id="inicio" class="hero"><div>
 <span class="pill">Enfermera profesional · Graneros</span>
 <h1>Cuidado cercano y profesional, <em>en la comodidad de tu hogar</em></h1>
 <p>Inyecciones, curaciones, controles y más, con trato humano y materiales estériles.</p>
 <a class="btn" href="#catalogo">Ver servicios</a> <a class="btn ghost" href="https://wa.me/56985220962" target="_blank">WhatsApp</a></div>
-<img class="hero-img" src="perfil.jpg" alt="Daniela Antinao, enfermera profesional" onerror="this.style.display='none'"></section>
+<div class="hero-pic"><img class="hero-img" src="perfil.jpg" alt="Daniela Antinao, enfermera profesional" onerror="this.style.display='none'"><span class="fl1">🏠 A domicilio</span><span class="fl2">🎓 Enfermera titulada</span></div></section>
 
-<section class="stats reveal"><div><b>100%</b>Atención a domicilio</div><div><b>Estéril</b>Material de un solo uso</div><div><b>Graneros</b>y comunas cercanas</div></section>
+<section class="stats reveal"><div><b>🏠 100%</b>Atención a domicilio</div><div><b>🧴 Estéril</b>Material de un solo uso</div><div><b>📍 Graneros</b>y comunas cercanas</div></section>
 
 <section id="sobre-mi" class="about reveal"><img src="perfil.jpg" alt="Daniela Antinao, enfermera profesional" onerror="this.style.display='none'">
 <div><h2 class="t">Hola, soy Daniela</h2>
@@ -71,9 +103,11 @@ footer{text-align:center;padding:26px;background:#2b2438;color:#ddd;font-size:.8
 <form id="f"><label>Nombre<input id="n" required></label><label>Teléfono<input id="tel" required></label>
 <label>Servicio<select id="sv"></select></label><label>Mensaje<textarea id="m" rows="3"></textarea></label>
 <button class="btn" type="submit">Enviar por WhatsApp</button></form></div></section>
+<a class="wa" href="https://wa.me/56985220962?text=Hola%20Daniela,%20quiero%20agendar%20una%20atenci%C3%B3n" target="_blank" aria-label="WhatsApp">💬</a>
 <footer>© Daniela Antinao González · Enfermera profesional · Graneros, Chile</footer>
 
 <script>
+document.querySelectorAll('nav a').forEach(a=>a.addEventListener('click',()=>document.body.classList.remove('open')));
 const U="https://images.unsplash.com/",Q="?auto=format&fit=crop&w=800&q=70";
 const CAT={inyectables:"Inyectables y vacunas",curaciones:"Curaciones",controles:"Controles y evaluación",procedimientos:"Procedimientos",cuidados:"Cuidados en casa"};
 const S=[
@@ -87,7 +121,10 @@ const S=[
 ["Control de enfermería a domicilio","controles","Evaluación de signos vitales, revisión de tratamiento y educación en salud.",20000,"photo-1666214280557-f1b5022eb634"],
 ["Instalación de vía venosa y suero","procedimientos","Hidratación o medicamentos endovenosos indicados por tu médico.",25000,"photo-1615486511484-92e172cc4fe0"],
 ["Sonda nasogástrica / Foley","procedimientos","Instalación y recambio con técnica estéril y mucha delicadeza.",30000,"photo-1551190822-a9333d879b1f"],
-["Cuidado de adultos mayores (por hora)","cuidados","Acompañamiento, higiene, administración de medicamentos y control de signos.",15000,"photo-1576765608535-5f04d1e3f289"]];
+["Cuidado de adultos mayores (por hora)","cuidados","Acompañamiento, higiene, administración de medicamentos y control de signos.",12000,"photo-1576765608535-5f04d1e3f289"],
+["Cuidado de adulto mayor · Turno de 3 horas","cuidados","Turno de 3 horas de acompañamiento, higiene y control de medicamentos y signos vitales.",36000,"photo-1576765608535-5f04d1e3f289"],
+["Cuidado de adulto mayor · Turno de 4 horas","cuidados","Turno de 4 horas de acompañamiento, higiene y control de medicamentos y signos vitales.",48000,"photo-1576765608535-5f04d1e3f289"],
+["Cuidado de adulto mayor · Turno de 5 horas","cuidados","Turno de 5 horas de acompañamiento, higiene y control de medicamentos y signos vitales.",60000,"photo-1576765608535-5f04d1e3f289"]];
 const $=id=>document.getElementById(id),clp=n=>"$"+n.toLocaleString("es-CL");
 $("filters").innerHTML='<button class="chip active" data-f="all">Todos</button>'+Object.entries(CAT).map(([k,v])=>`<button class="chip" data-f="${k}">${v}</button>`).join("");
 $("servicios").innerHTML=S.map((s,i)=>`<article class="card reveal" data-cat="${s[1]}"><div class="ph" style="background-image:url('${U+s[4]+Q}')"></div><div class="body"><span class="tag">${CAT[s[1]]}</span><h3>${s[0]}</h3><p>${s[2]}</p><div class="foot"><strong>${clp(s[3])}</strong><a href="#contacto" data-i="${i}" class="pick">Solicitar →</a></div></div></article>`).join("");
