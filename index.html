@@ -69,11 +69,13 @@ section.s{padding:56px 5vw}.cover-in{grid-template-columns:1fr;text-align:center
 .cover .filters{flex-wrap:wrap;justify-content:center}
 .grid{grid-template-columns:1fr}.box{padding:26px 20px}
 }
+.ic{height:110px;display:flex;align-items:center;justify-content:center;font-size:3rem;background:linear-gradient(135deg,#ffc2d6,#cdbfff)}
+.clases{background:var(--soft)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style></head>
 <body>
 <header class="nav"><a href="#inicio" class="logo">♥ Daniela Antinao</a>
-<button class="burger" aria-label="Menú" onclick="document.body.classList.toggle('open')">☰</button><nav><a href="#sobre-mi">Sobre mí</a><a href="#catalogo">Servicios</a><a href="#cobertura">Cobertura</a><a href="#contacto">Contacto</a></nav></header>
+<button class="burger" aria-label="Menú" onclick="document.body.classList.toggle('open')">☰</button><nav><a href="#sobre-mi">Sobre mí</a><a href="#catalogo">Servicios</a><a href="#clases">Clases</a><a href="#cobertura">Cobertura</a><a href="#contacto">Contacto</a></nav></header>
 
 <section id="inicio" class="hero"><div>
 <span class="pill">Enfermera profesional · Graneros</span>
@@ -93,6 +95,10 @@ section.s{padding:56px 5vw}.cover-in{grid-template-columns:1fr;text-align:center
 <p class="center sub">Valores referenciales en pesos chilenos (CLP). Insumos y traslado fuera de Graneros pueden tener recargo.</p>
 <div class="filters" id="filters"></div><div class="grid" id="servicios"></div></section>
 
+<section id="clases" class="s clases"><h2 class="t center" style="display:block;text-align:center">Clases y asesorías</h2>
+<p class="center sub">Aprende el Proceso de Atención de Enfermería (PAE) con una enfermera titulada. Valor: $5.000 por hora.</p>
+<div class="grid" id="clases-grid"></div></section>
+
 <section id="cobertura" class="s cover"><div class="cover-in reveal"><div><h2 class="t">Zona de cobertura</h2>
 <p>Atiendo a domicilio en Graneros y comunas cercanas. Fuera de Graneros puede aplicarse un recargo por traslado.</p><br>
 <span class="tag">Graneros</span><span class="tag">Rancagua</span><span class="tag">Mostazal</span><span class="tag">Codegua</span><span class="tag">Machalí</span><span class="tag">Doñihue</span><br>
@@ -100,7 +106,7 @@ section.s{padding:56px 5vw}.cover-in{grid-template-columns:1fr;text-align:center
 <iframe title="Mapa de cobertura" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-70.90%2C-34.22%2C-70.55%2C-33.93&layer=mapnik&marker=-34.0667%2C-70.7333"></iframe></div></section>
 
 <section id="contacto" class="s contact"><div class="box"><h2 class="t">Agenda tu atención</h2>
-<form id="f"><label>Nombre<input id="n" required></label><label>Teléfono<input id="tel" required></label>
+<form id="f"><label>Nombre<input id="n" required></label><label>Teléfono<input id="tel" type="tel" inputmode="numeric" value="+569 " maxlength="14" autocomplete="tel" pattern="\+569 [0-9]{8}" title="Escribe los 8 dígitos que siguen al +569" required></label>
 <label>Servicio<select id="sv"></select></label><label>Mensaje<textarea id="m" rows="3"></textarea></label>
 <button class="btn" type="submit">Enviar por WhatsApp</button></form></div></section>
 <a class="wa" href="https://wa.me/56985220962?text=Hola%20Daniela,%20quiero%20agendar%20una%20atenci%C3%B3n" target="_blank" aria-label="WhatsApp">💬</a>
@@ -125,14 +131,21 @@ const S=[
 ["Cuidado de adulto mayor · Turno de 3 horas","cuidados","Turno de 3 horas de acompañamiento, higiene y control de medicamentos y signos vitales.",36000,"photo-1576765608535-5f04d1e3f289"],
 ["Cuidado de adulto mayor · Turno de 4 horas","cuidados","Turno de 4 horas de acompañamiento, higiene y control de medicamentos y signos vitales.",48000,"photo-1576765608535-5f04d1e3f289"],
 ["Cuidado de adulto mayor · Turno de 5 horas","cuidados","Turno de 5 horas de acompañamiento, higiene y control de medicamentos y signos vitales.",60000,"photo-1576765608535-5f04d1e3f289"]];
+const C=[["Clase básica · Proceso de Atención de Enfermería","📘","Fundamentos del PAE: valoración, diagnóstico, planificación, ejecución y evaluación, explicados paso a paso.",5000],
+["Clase intermedia · Proceso de Atención de Enfermería","📗","Aplicación del PAE en casos clínicos: priorización de diagnósticos, planes de cuidado y registros de enfermería.",5000],
+["Asesoría personalizada · Proceso de Atención de Enfermería","🎓","Acompañamiento individual para tus trabajos, casos clínicos y dudas sobre el proceso de atención de enfermería.",5000]];
+const A=S.map(x=>[x[0]]).concat(C.map(x=>[x[0]]));
 const $=id=>document.getElementById(id),clp=n=>"$"+n.toLocaleString("es-CL");
 $("filters").innerHTML='<button class="chip active" data-f="all">Todos</button>'+Object.entries(CAT).map(([k,v])=>`<button class="chip" data-f="${k}">${v}</button>`).join("");
 $("servicios").innerHTML=S.map((s,i)=>`<article class="card reveal" data-cat="${s[1]}"><div class="ph" style="background-image:url('${U+s[4]+Q}')"></div><div class="body"><span class="tag">${CAT[s[1]]}</span><h3>${s[0]}</h3><p>${s[2]}</p><div class="foot"><strong>${clp(s[3])}</strong><a href="#contacto" data-i="${i}" class="pick">Solicitar →</a></div></div></article>`).join("");
-$("sv").innerHTML='<option value="">Consulta general</option>'+S.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join("");
+$("clases-grid").innerHTML=C.map((c,j)=>`<article class="card reveal"><div class="ic">${c[1]}</div><div class="body"><span class="tag">Clases y asesorías</span><h3>${c[0]}</h3><p>${c[2]}</p><div class="foot"><strong>${clp(c[3])} / hora</strong><a href="#contacto" data-i="${S.length+j}" class="pick">Solicitar →</a></div></div></article>`).join("");
+$("sv").innerHTML='<option value="">Consulta general</option>'+A.map((s,i)=>`<option value="${i}">${s[0]}</option>`).join("");
 document.querySelectorAll(".chip").forEach(b=>b.onclick=()=>{document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));b.classList.add("active");
 document.querySelectorAll("#servicios .card").forEach(c=>c.style.display=(b.dataset.f==="all"||c.dataset.cat===b.dataset.f)?"":"none")});
+const tel=$("tel");tel.addEventListener("input",()=>{tel.value="+569 "+tel.value.replace(/^\+569/,"").replace(/\D/g,"").slice(0,8)});
+tel.addEventListener("focus",()=>setTimeout(()=>tel.setSelectionRange(99,99),0));
 document.querySelectorAll(".pick").forEach(a=>a.onclick=()=>{$("sv").value=a.dataset.i});
-$("f").onsubmit=e=>{e.preventDefault();const s=$("sv").value,sv=s===""?"consulta general":S[s][0];
+$("f").onsubmit=e=>{e.preventDefault();const s=$("sv").value,sv=s===""?"consulta general":A[s][0];
 const txt=`Hola Daniela, soy ${$("n").value} (${$("tel").value}). Quiero agendar: ${sv}. ${$("m").value}`;
 window.open("https://wa.me/56985220962?text="+encodeURIComponent(txt),"_blank")};
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("show");io.unobserve(x.target)}}),{threshold:.12});
